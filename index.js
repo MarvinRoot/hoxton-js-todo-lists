@@ -8,21 +8,29 @@ alert(message)
 
 
 
-const idNumber = Number(prompt(`Enter your id number: `))
+let idNumber = Number(prompt(`Enter your id number: `))
 
 toDoList =  ``
-
-for(const todo of todos){
-    if(idNumber===todo.userId){
-        toDoList += `To Do: ${todo.title}\n`
+if(isNaN(idNumber) || idNumber>10 || idNumber<1){
+    alert("You didn't enter the correct ID")
+}else {
+    
+    for(const todo of todos){
+        if(idNumber===todo.userId){
+            toDoList += `To Do: ${todo.title}\n`
+        }
     }
+
+
+    const confirmation = confirm('If you want to view the current to-do list press "ok"\nIf you want to add a to-do to the list press "cancel"')
+
+    if(confirmation){
+        alert(toDoList)
+    }else{
+        const newToDo = prompt("Enter the title of your to-do")
+        todos.push({userId: idNumber, id: todos.length+1, title: newToDo, completed: false})
+        toDoList += `To Do: ${newToDo}\n`
+        alert(toDoList)
+    }
+    
 }
-
-alert(toDoList)
-
-// for(i=1; i<=users.length; i++){
-//     if(idNumber===i){
-//         alert(`Here is your To-do list ${users[i-1].username}\n
-//         ${todos.slice(1, 6)}`)
-//     }
-// }
