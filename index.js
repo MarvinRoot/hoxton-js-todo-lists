@@ -34,3 +34,24 @@ if(isNaN(idNumber) || idNumber>10 || idNumber<1){
     }
     
 }
+
+const confirmation2 = confirm('If you want to update a to-do click "ok"\nIf you want to delete a to-do click "cancel"')
+
+if(confirmation2){
+    const updateToDoId = Number(prompt("Enter the ID of the to-do you want to update"))
+    if(isNaN(updateToDoId)){
+        console.error("YOU PUT THE WRONG ID!!!!!!");
+    }else{
+        const updateToDoTitle = prompt("Enter the new title")
+        const updateToDoCompleted = prompt("Enter false if the to-do is not completed and true if the to-do is completed")
+        todos[updateToDoId-1].title=updateToDoTitle
+        todos[updateToDoId-1].completed=updateToDoCompleted
+    }
+}else{
+    const deleteToDoId = Number(prompt("Enter the ID of the to-do you want to delete"))
+    if(isNaN(deleteToDoId)){
+        console.error("YOU PUT THE WRONG ID!!!!!!");
+    }else{
+        todos.splice(deleteToDoId-1,deleteToDoId)
+    }
+}
